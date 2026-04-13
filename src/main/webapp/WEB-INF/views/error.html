@@ -11,26 +11,90 @@
       errorDetail  : 사용자에게 안내할 상세 내용
 -->
 <html lang="ko" xmlns:th="http://www.thymeleaf.org">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title th:text="|오류 ${errorCode} - Product Management|">오류 발생</title>
     <style>
-        body { font-family: 'Malgun Gothic', Arial, sans-serif; max-width: 700px; margin: 80px auto; padding: 0 20px; color: #333; text-align: center; }
-        .error-icon { font-size: 5em; margin-bottom: 16px; }
-        .error-code { font-size: 4em; font-weight: bold; color: #e74c3c; margin: 0; line-height: 1; }
-        .error-title { font-size: 1.6em; color: #2c3e50; margin: 12px 0 24px; }
-        .error-box { background: #fff5f5; border: 1px solid #f5c6cb; border-radius: 8px; padding: 20px 28px; margin: 24px 0; text-align: left; }
-        .error-box p { margin: 8px 0; line-height: 1.7; }
-        .error-label { font-weight: bold; color: #c0392b; }
-        .btn { display: inline-block; padding: 10px 24px; background: #4a90d9; color: white; text-decoration: none; border-radius: 4px; margin-top: 8px; }
-        .btn:hover { background: #357abd; }
-        .btn-gray { background: #6c757d; }
-        .btn-gray:hover { background: #545b62; }
+        body {
+            font-family: 'Malgun Gothic', Arial, sans-serif;
+            max-width: 700px;
+            margin: 80px auto;
+            padding: 0 20px;
+            color: #333;
+            text-align: center;
+        }
+
+        .error-icon {
+            font-size: 5em;
+            margin-bottom: 16px;
+        }
+
+        .error-code {
+            font-size: 4em;
+            font-weight: bold;
+            color: #e74c3c;
+            margin: 0;
+            line-height: 1;
+        }
+
+        .error-title {
+            font-size: 1.6em;
+            color: #2c3e50;
+            margin: 12px 0 24px;
+        }
+
+        .error-box {
+            background: #fff5f5;
+            border: 1px solid #f5c6cb;
+            border-radius: 8px;
+            padding: 20px 28px;
+            margin: 24px 0;
+            text-align: left;
+        }
+
+        .error-box p {
+            margin: 8px 0;
+            line-height: 1.7;
+        }
+
+        .error-label {
+            font-weight: bold;
+            color: #c0392b;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 10px 24px;
+            background: #4a90d9;
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            margin-top: 8px;
+        }
+
+        .btn:hover {
+            background: #357abd;
+        }
+
+        .btn-gray {
+            background: #6c757d;
+        }
+
+        .btn-gray:hover {
+            background: #545b62;
+        }
     </style>
 </head>
-<body>
 
+<body>
+    <header>
+        <p th:text="${'실습 수행 일시: '
+        + #temporals.format(#temporals.createNow(), 'yyyy년-MM월-dd일 (E) a HH:mm:ss')
+        + ' | 학번: 2171107 | 성명: 김도윤 '}">
+        </p>
+    </header>
     <div class="error-icon">⚠️</div>
 
     <!--
@@ -55,6 +119,6 @@
     </div>
 
     <a class="btn" th:href="@{/products}">← 상품 목록으로 돌아가기</a>
-
 </body>
+
 </html>
