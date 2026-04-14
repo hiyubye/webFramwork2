@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>카테고리 목록</title>
+</head>
+
+<body>
+    <header>
+        <p th:text="${'실습 수행 일시: '
+        + #temporals.format(#temporals.createNow(), 'yyyy년-MM월-dd일 (E) a HH:mm:ss')
+        + ' | 학번: 2171107 | 성명: 김도윤 '}">
+        </p>
+    </header>
+    <h1>카테고리 목록</h1>
+    <a th:href="@{/categories/create}">+ 카테고리 등록</a>
+
+    <p th:if="${successMessage}" th:text="${successMessage}" style="color: blue;"></p>
+    <p th:if="${errorMessage}" th:text="${errorMessage}" style="color: red;"></p>
+
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>카테고리명</th>
+                <th>삭제</th>
+            </tr>
+        </thead>
+        <tbody>
+
+
+
+            <tr th:each="cat : ${categories}">
+                <td th:text="${cat.id}"></td>
+                <td th:text="${cat.name}"></td>
+                <td>
+                    <form th:action="@{/categories/{id}/delete(id=${cat.id})}" method="post">
+                        <button type="submit">삭제</button>
+                    </form>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+</body>
+
+</html>

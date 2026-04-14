@@ -53,7 +53,7 @@ public class CategoryController {
             categoryService.deleteCategory(id);
             redirectAttributes.addFlashAttribute("successMessage", "삭제 완료");
         } catch (IllegalStateException e) {
-            redirectAttributes.addFlashAttribute("erroMessage", e.getMessage());
+            redirectAttributes.addFlashAttribute("errorMessage", e.getMessage());
         }
         return "redirect:/categories";
     }
