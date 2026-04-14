@@ -29,7 +29,7 @@ public class CategoryController {
     @GetMapping("/create")
     public String showCreateForm(Model model) {
         model.addAttribute("categoryForm", new CategoryForm());
-        return "categoryList";
+        return "categoryForm";
     }
 
     @PostMapping("/create")
@@ -42,6 +42,7 @@ public class CategoryController {
             redirectAttributes.addFlashAttribute("successMessage", "등록 완료");
         } catch (DuplicateCategoryException e) {
             bindingResult.rejectValue("name", "duplicate", e.getMessage());
+            return "categoryForm";
         }
         return "redirect:/categories";
     }
